@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: conjunta_ana_soria_app
+    ports:
+      - "8080:80"  # Mapea puerto 80 del host al 80 del contenedor
+    volumes:
+      # Opcional: Montar volumen para desarrollo local (cambios en vivo)
+      # Descomenta la siguiente línea solo para local:
+      - .:/var/www/html
+    restart: always

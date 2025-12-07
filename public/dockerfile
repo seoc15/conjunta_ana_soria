@@ -1,0 +1,17 @@
+# Imagen base solicitada
+FROM php:8.2-apache
+
+# Actualizar paquetes e instalar dependencias si fueran necesarias (opcional)
+# RUN apt-get update && apt-get install -y git zip unzip
+
+# Activar el módulo rewrite de Apache (común en apps PHP)
+RUN a2enmod rewrite
+
+# Copiar los archivos del proyecto al directorio raíz de Apache en el contenedor
+COPY . /var/www/html/
+
+# Ajustar permisos para que Apache pueda leer/escribir si es necesario
+RUN chown -R www-data:www-data /var/www/html
+
+# Exponer el puerto 80
+EXPOSE 80
